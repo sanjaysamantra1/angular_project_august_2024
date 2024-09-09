@@ -1,0 +1,27 @@
+<h3 class="text-center">Data Binding Component</h3><hr/>
+
+<h4>My Name is:: {{myName}}</h4>
+<h4>My Name is:: <span [innerHTML]="myName"></span></h4>
+<h4>My Name is:: <span bind-innerHTML="myName"></span></h4>
+
+<img src="https://i.pinimg.com/736x/6b/cf/87/6bcf8787f5d2f4af1ad721ab4a6d2efe.jpg" alt="sachin" width="250"
+    height="350" />
+<img src="{{img_url}}" alt="sachin" width="250" height="350" class="mx-2" />
+<img [src]="img_url" alt="sachin" width="250" height="350" />
+<img bind-src="img_url" alt="sachin" width="250" height="350" class="mx-2" />
+<br /><br />
+
+HTML syntax:: <input value="Sachin" class="mx-2" /> <br />
+1 way: <input value="{{myName}}" class="mx-2" /> <br />
+1 way: <input [value]="myName" class="mx-2" /><br />
+1 way: <input bind-value="myName" class="mx-2" /><br />
+2 way: <input [(ngModel)]="myName" class="mx-2" on-change="nameChanged()" /><br />
+2 way: <input bindon-ngModel="myName" class="mx-2" (ngModelChange)="onNameChange($event)" /><br />
+<br /><br />
+
+<button class="btn btn-primary" disabled="true">Btn-1</button>
+<button class="btn btn-primary mx-2" disabled={{flag}}>Btn-2</button>
+<button class="btn btn-primary mx-2" [disabled]='flag'>Btn-3</button>
+<button class="btn btn-primary mx-2" bind-disabled='flag'>Btn-4</button>
+<button class="btn btn-primary mx-2" (click)="f1()">Click Me</button>
+<button class="btn btn-primary mx-2" on-click="f1()">Click Me</button>
