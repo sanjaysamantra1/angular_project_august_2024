@@ -1,0 +1,11 @@
+<h1 class="text-center">DataBinding Assignments</h1>
+<hr />
+
+<h4 [hidden]="flag">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio praesentium modi, alias harum fugit
+    asperiores, et quia, iure consectetur corporis dolor. Fugit porro similique in et distinctio fuga magnam expedita.
+</h4>
+<button class="btn btn-primary" (click)="flag=!flag">{{flag?'SHOW':'HIDE'}}</button>
+<hr />
+
+<textarea cols="30" rows="4" maxlength="100" [(ngModel)]="msg"></textarea>
+<div>Remaining Characters: {{100 - msg.length}}</div>
