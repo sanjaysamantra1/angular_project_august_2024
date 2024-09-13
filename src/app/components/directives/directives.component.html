@@ -1,0 +1,100 @@
+<h3 class="text-center">Angular Directives</h3>
+<hr />
+<div *ngIf="num%2==0">{{num}} is Even</div>
+<div *ngIf="num%2!=0">{{num}} is Odd</div>
+
+@if(num%2 == 0){
+<div>{{num}} is Even</div>
+}@else{
+<div>{{num}} is Odd</div>
+}
+
+<div [ngSwitch]="dayNum">
+    <div *ngSwitchCase="1">Monday</div>
+    <div *ngSwitchCase="2">Tuesday</div>
+    <div *ngSwitchCase="3">Wednesday</div>
+    <div *ngSwitchCase="4">Thursday</div>
+    <div *ngSwitchCase="5">Friday</div>
+    <div *ngSwitchCase="6">Saturday</div>
+    <div *ngSwitchCase="7">Sunday</div>
+    <div *ngSwitchDefault>Sunday</div>
+</div>
+
+@switch (dayNum) {
+@case (1) { <div>Monday</div> }
+@case (2) { <div>Tuesday</div> }
+@case (3) { <div>Wednesday</div> }
+@case (4) { <div>Thursday</div> }
+@case (5) { <div>Friday</div> }
+@case (6) { <div>Saturday</div> }
+@case (7) { <div>Sunday</div> }
+@default { <div>Not a Valid number</div>> }
+}
+
+<h3 *ngIf="flag">This is Paragraph-1</h3>
+<h3 [hidden]="!flag">This is Paragraph-2</h3>
+
+<ol>
+    <li *ngFor="let car of cars">{{car}}</li>
+</ol>
+<button (click)="addNewCar()">Add a New Car</button><br />
+
+<select>
+    @for(car of cars;track $index){
+    <option>{{car}}</option>
+    }
+</select>
+
+<div>
+    @for(car of cars;track $index;let ind = $index){
+    <span>{{car}}---{{ind}} &nbsp;</span>
+    }@empty{
+    No Cars Found
+    }
+</div>
+
+<div>
+    @for(char of name;track $index){
+    {{char}}
+    }
+</div>
+
+<h3>Employee Table</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Index</th>
+            <th>Emp Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Gender</th>
+            <th>Is First?</th>
+            <th>Is Last?</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(emp of employees;track $index;let ind=$index;let isFirst=$first;let isLast=$last;){
+        <tr>
+            <td>{{ind+1}}</td>
+            <td>{{emp.eId}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.sal}}</td>
+            <td>{{emp.gender}}</td>
+            <td>{{isFirst}}</td>
+            <td>{{isLast}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <tbody>
+        <tr *ngFor="let emp of employees;trackBy:trackByFn">
+            <td>{{emp.eId}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.sal}}</td>
+            <td>{{emp.gender}}</td>
+        </tr>
+    </tbody>
+</table>
+<button (click)="addNewEmployee()">Add New Emp</button>
