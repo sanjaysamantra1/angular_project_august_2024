@@ -98,3 +98,17 @@
     </tbody>
 </table>
 <button (click)="addNewEmployee()">Add New Emp</button>
+<hr />
+<p [style.color]="num % 2 == 0 ? 'blue' : 'red'"> Change Color Dynamically </p>
+<p [style.fontSize.px]='num % 2 == 0 ? 24 : 48'> Add style with unit </p>
+<p [style.background-color]=" flag?'green':'blue' "> Add style conditionally </p>
+<p [ngStyle]="flag ? myStyle1 : myStyle2"> NgStyle for multiple values </p>
+<p [ngStyle]="myFunction()"> NgStyle for multiple values </p>
+<hr />
+
+<p [class.border]='flag'> Add a class to an element </p>
+<p [ngClass]="myClasses"> Add Multiple classes to an element </p>
+<p [ngClass]="myFunction2()"> Add Multiple classes to an element </p>
+<button class="btn" [ngClass]="flag ? 'btn-success' : 'btn-danger'">
+    Class Binding example
+</button>

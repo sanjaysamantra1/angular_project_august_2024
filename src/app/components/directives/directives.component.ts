@@ -37,4 +37,16 @@ export class DirectivesComponent {
   trackByFn(index: number, item: any): number {
     return item.eId;
   }
+
+  myStyle1 = { color: "red", fontSize: "24px", border: "5px dotted green" }
+  myStyle2 = { color: "blue", fontSize: "36px", border: "5px dashed orange" }
+
+  myFunction() {
+    return this.myStyle1;
+  }
+  
+  myClasses = { class1: true, class2: false, class3: true }
+  myFunction2() {
+    return this.myClasses;
+  }
 }
