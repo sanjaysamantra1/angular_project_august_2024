@@ -1,0 +1,37 @@
+<h3 class="text-center">Product List</h3>
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-sm-4">
+            Filter By Category:
+            <select [(ngModel)]="selectedCategory" (change)="handleChange()">
+                @for(ele of categories;track $index){
+                <option>{{ele}}</option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-4">
+            Search:
+            <input type="search" placeholder="Search..." [(ngModel)]="searchText" (ngModelChange)="onSearchTextChange($event)" />
+        </div>
+        <div class="col-sm-4">
+            <button class="btn btn-primary mx-1" (click)="sortProducts('asc')">Sort Asc</button>
+            <button class="btn btn-secondary" (click)="sortProducts('desc')">Sort Desc</button>
+        </div>
+    </div>
+    <div class="row">
+        @for(product of filteredProducts;track product.id){
+        <div class="col-sm-3">
+            <div class="card text-center">
+                <img src="{{product.image}}" class="card-img-top" alt="..." height="150px">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.category}}</h5>
+                    <p class="card-text">{{product.title}}</p>
+                    <p class="card-text">{{product.price}}</p>
+                    <p class="card-text">{{product.rating.rate}}({{product.rating.count}})</p>
+                    <button class="btn btn-primary">View</button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
