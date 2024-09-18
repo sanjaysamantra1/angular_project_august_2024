@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as data from './products.json';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-list',
@@ -39,5 +40,10 @@ export class ProductListComponent {
 
   handleChange() {
     this.filteredProducts = this.products.filter((prod: any) => prod.category === this.selectedCategory);
+  }
+
+  addToCart() {
+    // alert('Your Item Got Added To Cart!!')
+    Swal.fire('Good job!', 'Your Item got added to cart!!', 'error');
   }
 }

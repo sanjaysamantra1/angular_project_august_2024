@@ -1,10 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { NumberonlyDirective } from '../../directives/numberonly.directive';
+import { HighlightDirective } from '../../directives/highlight.directive';
+import { BackbuttonDirective } from '../../directives/backbutton.directive';
 
 @Component({
   selector: 'app-directives',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    NumberonlyDirective,
+    HighlightDirective,
+    BackbuttonDirective
+  ],
   templateUrl: './directives.component.html',
   styleUrl: './directives.component.css'
 })
