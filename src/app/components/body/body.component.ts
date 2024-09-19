@@ -6,6 +6,7 @@ import { UserListComponent } from '../user-list/user-list.component';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { MyModalComponent } from '../my-modal/my-modal.component';
 import { Demo1Component } from '../demo1/demo1.component';
+import { PipesDemoComponent } from '../pipes-demo/pipes-demo.component';
 
 @Component({
   selector: 'app-body',
@@ -17,7 +18,8 @@ import { Demo1Component } from '../demo1/demo1.component';
     UserListComponent,
     ProductListComponent,
     MyModalComponent,
-    Demo1Component
+    Demo1Component,
+    PipesDemoComponent
   ],
   templateUrl: './body.component.html',
   styleUrl: './body.component.css'
