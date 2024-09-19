@@ -53,6 +53,11 @@
 <textarea [(ngModel)]="msg2" maxlength="200"></textarea>
 <div>Remaining:: {{msg2 | remaining :200 }}</div>
 
+<h1>{{longStr | truncate }}</h1>
+<h1>{{longStr | truncate : 12 }}</h1>
+<h1>{{longStr | truncate : 12 : true }}</h1>
+<h1>{{longStr | truncate : 12 : false : '***' }}</h1>
+
 <!-- 
 <table class="table table-bordered table-striped">
     <tbody>

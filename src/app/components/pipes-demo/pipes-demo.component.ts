@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RemainingPipe } from '../../pipes/remaining.pipe';
+import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 @Component({
   selector: 'app-pipes-demo',
@@ -10,6 +11,7 @@ import { RemainingPipe } from '../../pipes/remaining.pipe';
     CommonModule,
     FormsModule,
     RemainingPipe,
+    TruncatePipe
   ],
   templateUrl: './pipes-demo.component.html',
   styleUrl: './pipes-demo.component.css'
@@ -23,6 +25,7 @@ export class PipesDemoComponent {
   // userPromise: any;
   msg: string = 'Hello';
   msg2: string = 'Hello';
+  longStr:string = 'Hello Hiiiiiiiiiii, I am a Long String. Heloooooooooo HIiiiiiiii'
 
   constructor() {
     // this.userPromise = fetch('https://jsonplaceholder.typicode.com/users');
