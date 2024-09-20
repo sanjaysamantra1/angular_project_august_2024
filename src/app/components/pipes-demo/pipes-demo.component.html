@@ -2,6 +2,9 @@
 <hr />
 
 <h4>Name: {{myName}}</h4>
+<h4>
+    <input type="text" [(ngModel)]="myName">
+</h4>
 <h4>Name: {{myName | uppercase}}</h4>
 <h4>Name: {{myName | lowercase}}</h4>
 <h4>Name: {{myName | titlecase}}</h4>
@@ -46,6 +49,11 @@
 <h4>{{cars}}</h4>
 <h4>{{cars | slice : 2 : 4}}</h4>
 <h4>{{myName | slice : 2 : -1}}</h4>
+
+
+<h4>Age is::{{myAge}}
+    <br /> <input type="number" [(ngModel)]="myAge">
+</h4>
 <hr />
 <textarea [(ngModel)]="msg" maxlength="100"></textarea>
 <div>Remaining:: {{msg | remaining : 100}}</div>
@@ -58,17 +66,26 @@
 <h1>{{longStr | truncate : 12 : true }}</h1>
 <h1>{{longStr | truncate : 12 : false : '***' }}</h1>
 
-<!-- 
 <table class="table table-bordered table-striped">
     <tbody>
         @for(user of userPromise | async;track $index){
-            <tr>
-                <td>{{user.id}}</td>
-                <td>{{user.name}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.phone}}</td>
-                <td>{{user.address.city}}</td>
-            </tr>
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.address.city}}</td>
+        </tr>
         }
     </tbody>
-</table> -->
+</table>
+<hr />
+
+<input type="text" #newNum class="m-1" />
+<button (click)="numArr.push(+newNum.value)">add data to arr</button>
+
+<div>
+    @for(ele of numArr | mySort;track ele){
+       <span>{{ele}} &nbsp;</span>
+    }
+</div>
