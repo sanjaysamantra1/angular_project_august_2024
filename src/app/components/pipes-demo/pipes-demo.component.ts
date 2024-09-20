@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RemainingPipe } from '../../pipes/remaining.pipe';
 import { TruncatePipe } from '../../pipes/truncate.pipe';
-import { MySortPipe } from '../../pies/my-sort.pipe';
+import { MySortPipe } from '../../pipes/my-sort.pipe';
 
 @Component({
   selector: 'app-pipes-demo',

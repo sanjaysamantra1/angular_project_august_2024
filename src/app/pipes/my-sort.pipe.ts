@@ -2,13 +2,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'mySort',
-  standalone: true,
-  pure: false
+  standalone: true
 })
 export class MySortPipe implements PipeTransform {
 
   transform(arr: any) {
-    return arr.sort((a: number, b: number) => a - b)
+    return arr.sort((a: any, b: any) => a - b);
   }
 
 }
