@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { EmployeeTableComponent } from '../employee-table/employee-table.component';
 import { EmployeeAddComponent } from '../employee-add/employee-add.component';
 import { CommonModule } from '@angular/common';
+import { EmployeeEditComponent } from '../employee-edit/employee-edit.component';
 
 @Component({
   selector: 'app-employee-crud',
@@ -9,7 +10,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     EmployeeTableComponent,
-    EmployeeAddComponent
+    EmployeeAddComponent,
+    EmployeeEditComponent
   ],
   templateUrl: './employee-crud.component.html',
   styleUrl: './employee-crud.component.css'
@@ -22,10 +24,12 @@ export class EmployeeCrudComponent {
     { eId: 102, name: 'sita', sal: 9000, gender: 'female' },
     { eId: 105, name: 'deepak', sal: 8000, gender: 'male' }
   ];
-  selectedEmployee: any = { eId: 0, name: '', sal: 0, gender: '' }
+  selectedEmployee: any = { eId: 0, name: '', sal: 0, gender: '' };
+  isEdit:boolean = false;
 
   editEmployee(emp: any) {
     this.selectedEmployee = emp;
+    this.isEdit = true;
   }
 
   addEmployee(newEmpObj: any) {

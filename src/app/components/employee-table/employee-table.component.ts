@@ -18,6 +18,7 @@ export class EmployeeTableComponent {
 
   deleteEmpEvent = new EventEmitter();
   editEmpEvent = new EventEmitter();
+  
   deleteEmp(eId: number) {
     this.deleteEmpEvent.emit(eId);
   }
