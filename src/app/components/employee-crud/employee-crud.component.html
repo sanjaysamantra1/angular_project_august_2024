@@ -1,9 +1,9 @@
 <h3 class="text-center">This is Employee CRUD Component</h3>
-<h1>Name: {{selectedEmployee?.name}}</h1>
+<h1>Name: {{selectedEmployee | json}}</h1>
 <div class="container">
     <div class="row">
         <div class="col-sm-8 border">
-            <app-employee-table [editEmployee]="editEmployee" [employees]="employees" (deleteEmpEvent)="deleteEmployee($event)"></app-employee-table>
+            <app-employee-table (editEmpEvent)="editEmployee($event)" [employees]="employees" (deleteEmpEvent)="deleteEmployee($event)"></app-employee-table>
         </div>
         <div class="col-sm-4 border">
             <app-employee-add (addEmpEvent)="addEmployee($event)"></app-employee-add>

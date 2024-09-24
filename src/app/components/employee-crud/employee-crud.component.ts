@@ -22,7 +22,7 @@ export class EmployeeCrudComponent {
     { eId: 102, name: 'sita', sal: 9000, gender: 'female' },
     { eId: 105, name: 'deepak', sal: 8000, gender: 'male' }
   ];
-  selectedEmployee: any = {};
+  selectedEmployee: any = { eId: 0, name: '', sal: 0, gender: '' }
 
   editEmployee(emp: any) {
     this.selectedEmployee = emp;

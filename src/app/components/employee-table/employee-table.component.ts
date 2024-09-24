@@ -9,15 +9,19 @@ import { Component, EventEmitter } from '@angular/core';
   ],
   templateUrl: './employee-table.component.html',
   styleUrl: './employee-table.component.css',
-  inputs: ['employees','editEmployee'],
-  outputs: ['deleteEmpEvent']
+  inputs: ['employees', 'editEmployee'],
+  outputs: ['deleteEmpEvent', 'editEmpEvent']
 })
 export class EmployeeTableComponent {
   employees: any;
-  editEmployee:any;
-  
+  editEmployee: any;
+
   deleteEmpEvent = new EventEmitter();
+  editEmpEvent = new EventEmitter();
   deleteEmp(eId: number) {
     this.deleteEmpEvent.emit(eId);
+  }
+  editEmp(emp: any) {
+    this.editEmpEvent.emit(emp);
   }
 }
