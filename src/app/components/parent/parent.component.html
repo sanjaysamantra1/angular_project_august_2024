@@ -1,12 +1,30 @@
 <div class="text-center">
-    <div>I am Parent Component</div>
-    <div>My own data a is- {{a}}</div>
+    <div #div1>I am Parent Component</div>
+    <div>
+        My own data a is- {{a}} 
+
+        <input type="text" #myInputBox class="m-2" />
+        <input type="number" [(ngModel)]="a" />
+    </div>
     <div>My child data name is- {{parent_name}}</div>
     <select>
         @for(car of child2.cars;track car){
             <option>{{car}}</option>
         }
     </select>
+    <div>
+        count: {{count}} , prevousCount: {{previousCount}}
+
+        <button class="btn btn-primary m-2" (click)="increment()">+</button>
+        <button class="btn btn-danger" (click)="decrement()">-</button>
+        <button class="btn btn-success" (click)="changeUserData('sachin')">change user name</button>
+
+        {{user | json}}
+        <!-- <input [(ngModel)]="user.name" > -->
+        <div *ngFor="let item of changes">
+            {{item}}
+        </div>
+    </div>
 
     <div class="row mt-2">
         <div class="col-sm-6 border p-2">

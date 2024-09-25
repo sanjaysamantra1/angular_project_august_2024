@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-child1',
@@ -17,4 +17,34 @@ export class Child1Component {
   sendDataToParent() {
     this.name_event.emit(this.name);
   }
+
+  constructor() {
+    console.log('child constructor');
+  }
+  ngOnChanges(myChanges: SimpleChanges) {
+    console.log('child ngOnChanges');
+    console.log(myChanges)
+  }
+  ngOnInit() {
+    console.log('child ngOnChanges');
+    console.log('child ngOnInit');
+  }
+  ngDoCheck() {
+    console.log('child ngDoCheck');
+  }
+  // ngAfterContentInit() {
+  //   console.log('child ngAfterContentInit');
+  // }
+  // ngAfterContentChecked() {
+  //   console.log('child ngAfterContentChecked')
+  // }
+  // ngAfterViewInit() {
+  //   console.log('child ngAfterViewInit');
+  // }
+  // ngAfterViewChecked() {
+  //   console.log('child ngAfterViewChecked');
+  // }
+  // ngOnDestroy() {
+  //   console.log('child ngOnDestory');
+  // }
 }
