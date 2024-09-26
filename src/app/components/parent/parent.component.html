@@ -1,17 +1,30 @@
 <div class="text-center">
     <div #div1>I am Parent Component</div>
     <div>
-        My own data a is- {{a}} 
+        My own data a is- {{a}}
 
         <input type="text" #myInputBox class="m-2" />
+        <input type="text" #myInputBox class="m-2" />
+        <input type="text" #myInputBox class="m-2" />
+        <input type="text" #myInputBox class="m-2" />
+
         <input type="number" [(ngModel)]="a" />
     </div>
     <div>My child data name is- {{parent_name}}</div>
     <select>
         @for(car of child2.cars;track car){
-            <option>{{car}}</option>
+        <option>{{car}}</option>
         }
     </select>
+
+    <h4>
+        Fruits: 
+        @for(fruit of fruits;track fruit){
+            <span>{{fruit}}, &nbsp;</span>
+        }
+        <button (click)="fruits.push('mango')">Add Fruit</button>
+    </h4>
+
     <div>
         count: {{count}} , prevousCount: {{previousCount}}
 
@@ -31,7 +44,7 @@
             <app-child1 [a]="a" #child1 (name_event)="collectChildData($event)"></app-child1>
         </div>
         <div class="col-sm-6 border p-2">
-            <app-child2 [aChild2]="a" [child1]="child1" #child2></app-child2>
+            <app-child2 [fruits]="fruits" [aChild2]="a" [child1]="child1" #child2></app-child2>
         </div>
     </div>
 </div>

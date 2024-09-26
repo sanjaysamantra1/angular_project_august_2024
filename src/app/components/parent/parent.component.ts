@@ -1,4 +1,4 @@
-import { Component, ElementRef, KeyValueDiffer, KeyValueDiffers, ViewChild, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, KeyValueDiffer, KeyValueDiffers, OnChanges, OnInit, ViewChild, viewChild, ViewChildren } from '@angular/core';
 import { Child1Component } from '../child1/child1.component';
 import { Child2Component } from '../child2/child2.component';
 import { HttpClient } from '@angular/common/http';
@@ -15,18 +15,23 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   templateUrl: './parent.component.html',
-  styleUrl: './parent.component.css'
+  styleUrl: './parent.component.css',
 })
-export class ParentComponent {
+export class ParentComponent implements OnInit, OnChanges {
+  fruits: string[] = ['apple', 'banana']
+
   a: number;
   parent_name: string = '';
 
   @ViewChild('div1') myDiv1: any;
   @ViewChild('myInputBox') myInputBox: any;
+  @ViewChild(Child1Component) child1Component: any;
+  @ViewChildren('myInputBox') myInputBoxes: any;
 
   count = 0;
   previousCount = 0;
   hasChanged = false;
+  flag = true;
 
   increment = () => {
     this.previousCount = this.count;
@@ -53,14 +58,14 @@ export class ParentComponent {
   }
 
   // httpClient service helps to make API calls in angular
-  constructor(private keyValueDiffers: KeyValueDiffers) {
+  constructor(private keyValueDiffers: KeyValueDiffers, private cdr: ChangeDetectorRef) {
     console.log("Parent constructor");
     console.log(this.myDiv1)
     //  this.myDiv1.nativeElement.style.color = 'red'
     this.a = 10;
     this.userDiffer = this.keyValueDiffers.find(this.user).create();
   }
-  ngOnInit() {
+  ngOnInit() {  // method from OnInit Interface
     console.log('Parent ngOnInit');
     this.fetchData()
   }
@@ -69,6 +74,7 @@ export class ParentComponent {
   }
   ngDoCheck() {
     console.log('Parent ngDoCheck');
+    console.log(this.fruits)
     if (this.count !== this.previousCount) {
       console.log('count changed', this.count);
     }
@@ -78,6 +84,7 @@ export class ParentComponent {
         this.changes.push(`Property ${item.key} changed from ${item.previousValue} to ${item.currentValue}`);
       });
     }
+
   }
   ngAfterContentInit() {
     console.log('Parent ngAfterContentInit');
@@ -90,6 +97,12 @@ export class ParentComponent {
     console.log(this.myDiv1);
     this.myDiv1.nativeElement.style.color = 'red'
     this.myInputBox.nativeElement.focus();
+    console.log(this.child1Component);
+    console.log(this.child1Component.name);
+
+    this.myInputBoxes._results?.forEach((ele: any) => {
+      ele.nativeElement.style.backgroundColor = 'pink';
+    });
   }
   // ngAfterViewChecked() {
   //   console.log('Parent ngAfterViewChecked');

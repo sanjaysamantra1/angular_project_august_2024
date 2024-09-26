@@ -7,3 +7,11 @@
         <option>{{car}}</option>
     }
 </select>
+<h4>
+    Fruits: 
+        @for(fruit of fruits;track fruit){
+            <span>{{fruit}}, &nbsp;</span>
+        }
+</h4>
+
+<button class="btn btn-success" (click)="refresh()">Refresh</button>

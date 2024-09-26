@@ -9,6 +9,8 @@ import { Demo1Component } from '../demo1/demo1.component';
 import { PipesDemoComponent } from '../pipes-demo/pipes-demo.component';
 import { ParentComponent } from '../parent/parent.component';
 import { EmployeeCrudComponent } from '../employee-crud/employee-crud.component';
+import { Demo2Component } from '../demo2/demo2.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-body',
@@ -20,14 +22,16 @@ import { EmployeeCrudComponent } from '../employee-crud/employee-crud.component'
     UserListComponent,
     ProductListComponent,
     MyModalComponent,
-    Demo1Component,
     PipesDemoComponent,
     ParentComponent,
-    EmployeeCrudComponent
+    EmployeeCrudComponent,
+    Demo1Component,
+    Demo2Component,
+    CommonModule,
   ],
   templateUrl: './body.component.html',
   styleUrl: './body.component.css'
 })
 export class BodyComponent {
-
+  flag: boolean = true;
 }
