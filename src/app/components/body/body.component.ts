@@ -11,6 +11,9 @@ import { ParentComponent } from '../parent/parent.component';
 import { EmployeeCrudComponent } from '../employee-crud/employee-crud.component';
 import { Demo2Component } from '../demo2/demo2.component';
 import { CommonModule } from '@angular/common';
+import { Math1Component } from '../math1/math1.component';
+import { Math2Component } from '../math2/math2.component';
+import { HttpDemo1Component } from '../http-demo1/http-demo1.component';
 
 @Component({
   selector: 'app-body',
@@ -28,6 +31,9 @@ import { CommonModule } from '@angular/common';
     Demo1Component,
     Demo2Component,
     CommonModule,
+    Math1Component,
+    Math2Component,
+    HttpDemo1Component
   ],
   templateUrl: './body.component.html',
   styleUrl: './body.component.css'
