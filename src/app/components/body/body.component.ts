@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { Math1Component } from '../math1/math1.component';
 import { Math2Component } from '../math2/math2.component';
 import { HttpDemo1Component } from '../http-demo1/http-demo1.component';
+import { EmployeesHttpComponent } from '../employees-http/employees-http.component';
 
 @Component({
   selector: 'app-body',
@@ -33,7 +34,8 @@ import { HttpDemo1Component } from '../http-demo1/http-demo1.component';
     CommonModule,
     Math1Component,
     Math2Component,
-    HttpDemo1Component
+    HttpDemo1Component,
+    EmployeesHttpComponent
   ],
   templateUrl: './body.component.html',
   styleUrl: './body.component.css'

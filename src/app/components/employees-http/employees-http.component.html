@@ -1,0 +1,22 @@
+<h2 class="text-center">Employee Http</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>fullName</th>
+            <th>salary</th>
+            <th>email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(emp of allEmployees;track $index){
+        <tr>
+            <td>{{emp.id}}</td>
+            <td>{{emp.getFullName()}}</td>
+            <td>{{emp.sal}}</td>
+            <td>{{emp.email}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
