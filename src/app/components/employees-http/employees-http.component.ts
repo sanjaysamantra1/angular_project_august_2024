@@ -14,12 +14,12 @@ export class EmployeesHttpComponent {
 
   constructor(private employeeService: EmployeeService) {
   }
-
-  ngOnInit() {
+  fetchEmployees() {
     this.employeeService.getAllEmployees().subscribe((response: Employee[]) => {
       this.allEmployees = response;
-      // console.log(this.allEmployees);
-      // console.log(this.allEmployees[0] instanceof Employee)
     })
+  }
+  ngOnInit() {
+
   }
 }
