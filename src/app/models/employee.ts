@@ -22,6 +22,9 @@ export class Employee {
     }
 
     getFullName() {
-        return this.lastName + " " + this.firstName;
+        return this.firstName + " " + this.lastName;
+    }
+    getAnnualSal() {
+        return this.sal * 12;
     }
 }

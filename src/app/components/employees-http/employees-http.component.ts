@@ -17,6 +17,7 @@ export class EmployeesHttpComponent {
   fetchEmployees() {
     this.employeeService.getAllEmployees().subscribe((response: Employee[]) => {
       this.allEmployees = response;
+      console.log(response)
     })
   }
   ngOnInit() {
