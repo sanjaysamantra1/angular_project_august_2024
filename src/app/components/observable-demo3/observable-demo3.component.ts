@@ -1,25 +1,35 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { forkJoin, map, mergeMap, Observable, of, take, zip } from 'rxjs';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { concatMap, distinctUntilChanged, exhaustMap, forkJoin, from, fromEvent, map, mergeMap, Observable, of, switchMap, take, zip } from 'rxjs';
 
 @Component({
   selector: 'app-observable-demo3',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './observable-demo3.component.html',
   styleUrl: './observable-demo3.component.css'
 })
 export class ObservableDemo3Component {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.searchForm = new FormGroup({
+      searchField: new FormControl()
+    });
+  }
 
   ngOnInit() {
     // this.digitalClock();
     // this.zipDemo();
     // this.forkjoinDemo();
     // this.withoutMergeMapDemo();
-    this.mergeMapDemo();
+    // this.mergeMapDemo();
+    // this.concatMapDemo();
+    // this.switchMapDemo();
+    // this.exhaustMapDemo()
+    // this.distinctUntilChangedDemo()
+    this.distinctUntilChangedWithComparator()
   }
 
   time$: Observable<string> | undefined;
@@ -66,12 +76,60 @@ export class ObservableDemo3Component {
   mergeMapDemo() {
     // give me the cart details for 10 users
     let userPublisher = of(1, 2, 3, 4, 5);
-
     userPublisher.pipe(mergeMap(userId => {
       return this.httpClient.get(`https://fakestoreapi.com/carts/${userId}`)
     })).subscribe(cartResponse => {
       console.log(cartResponse)
     });
 
+  }
+  concatMapDemo() {
+    // give me the cart details for 10 users
+    let userPublisher = of(1, 2, 3, 4, 5);
+
+    userPublisher.pipe(concatMap(userId => {
+      return this.httpClient.get(`https://fakestoreapi.com/carts/${userId}`)
+    })).subscribe(cartResponse => {
+      console.log(cartResponse)
+    });
+  }
+
+
+  searchResult$: Observable<any> | undefined;
+  searchForm: any;
+  switchMapDemo() {
+    this.searchResult$ = this.searchForm.get("searchField").valueChanges.pipe(
+      switchMap((term) =>
+        this.httpClient.get<any>(`https://swapi.dev/api/people/?search=${term}`)
+      ),
+      map((response: any) =>
+        response.count > 0 ? response.results : []
+      ));
+  }
+
+  exhaustMapDemo() {
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+      exhaustMap(() => this.httpClient.get('https://fakestoreapi.com/products'))
+    );
+    result.subscribe((x) => console.log(x));
+  }
+
+  distinctUntilChangedDemo() {
+    let userIds = of(1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3);
+    userIds.pipe(distinctUntilChanged()).subscribe((res) => {
+      console.log(res);
+    })
+  }
+  distinctUntilChangedWithComparator() {
+    let user1 = { name: 'sanjay' }
+    let user2 = { name: 'sanjay' }
+    let user3 = { name: 'akash' }
+    let user4 = { name: 'deepak' }
+    let user5 = { name: 'deepak' }
+    let users = from([user1, user2, user3, user4, user5]);
+
+    users.pipe(distinctUntilChanged((prev, curr) => prev.name == curr.name))
+      .subscribe(val => console.log(val));
   }
 }
