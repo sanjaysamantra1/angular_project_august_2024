@@ -1,0 +1,14 @@
+<p>message1 works!</p>
+
+<table class="table">
+    <tbody>
+        @for(msg of messages;track $index){
+            <tr>
+                <td>{{$index}}</td>
+                <td>{{msg.text}}</td>
+            </tr>
+        }@empty {
+            No Messages to display
+        }
+    </tbody>
+</table>
