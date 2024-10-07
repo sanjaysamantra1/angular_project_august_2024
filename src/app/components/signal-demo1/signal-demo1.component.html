@@ -1,0 +1,39 @@
+<h3 class="text-center">Signal Example</h3>
+
+<hr />
+<h3>UserName is: {{userName()}}</h3>
+<button class="btn btn-primary" (click)="updateName()">Update Name</button>
+<br /><br />
+
+<button (click)="decrement()">-</button>
+<b>&nbsp; {{num()}} &nbsp;</b>
+<button (click)="increment()">+</button>
+<hr>
+<h3>num is {{num()}} & Square is {{numSquare()}}</h3>
+
+<table class="table table-bordered table-striped">
+    <tbody>
+        @for(msg of messages();track $index){
+        <tr>
+            <td>{{msg}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+User Details:
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card text-center">
+            <img src="" class="card-img-top" alt="..." height="150px">
+            <div class="card-body">
+                <h5 class="card-title">{{userObj.name}}</h5>
+                <p class="card-text">{{userObj.email}}</p>
+                <p class="card-text">{{userObj.address.city}}</p>
+                <p class="card-text">{{userObj.phone}}</p>
+                <p class="card-text">{{userObj.email}}</p>
+                <button class="btn btn-primary mx-1">View</button>
+            </div>
+        </div>
+    </div>
+</div>
