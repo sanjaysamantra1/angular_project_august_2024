@@ -1,0 +1,41 @@
+<h2 class="text-center">ModelDriven Form / Reactive Form</h2>
+<hr>
+<div class="row">
+    <div class="col-sm-4 offset-4 border p-3">
+        <form [formGroup]="registrationForm">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input id="firstName" class="form-control" formControlName="firstName" />
+            </div>
+            <div class="form-group">
+                <label for="lastName">last Name</label>
+                <input id="lastName" class="form-control" formControlName="lastName" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" class="form-control" formControlName="email" />
+            </div>
+            <div formGroupName="address">
+                <div class="form-group">
+                    <label for="street">street</label>
+                    <input id="street" class="form-control" formControlName="street" />
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input id="city" class="form-control" formControlName="city" />
+                </div>
+                <div class="form-group">
+                    <label for="pin">pin</label>
+                    <input id="pin" class="form-control" formControlName="pin" />
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <input type="reset" value="Clear" class="m-1 btn btn-danger">
+                <input type="submit" value="Submit" class="m-1 btn btn-success">
+            </div>
+        </form>
+        <pre>
+            {{registrationForm.value | json}}
+        </pre>
+    </div>
+</div>

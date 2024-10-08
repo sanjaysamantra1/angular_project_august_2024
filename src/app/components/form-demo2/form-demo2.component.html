@@ -1,0 +1,35 @@
+<h2 class="text-center">Template Driven Form</h2>
+
+<div class="row">
+    <div class="col-sm-4 offset-4 border p-2">
+        <form #myForm="ngForm" (submit)="submitMyForm(myForm.value)" (reset)="resetMyForm(myForm)">
+            <p>First Name :
+                <input name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" ngModel required
+                    minlength="5" /><br />
+                <span class="text-danger" *ngIf="firstName.dirty && firstName.hasError('required')">FirstName is
+                    Required</span>
+                <span class="text-danger" *ngIf="firstName.dirty && firstName.hasError('minlength')">FirstName should
+                    have minimum 5
+                    chars</span>
+            </p>
+            <pre>{{firstName.errors | json}}</pre>
+            <p>Last Name : <input name="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" ngModel /></p>
+            <p>Email: <input name="email" [(ngModel)]="user.email" #email="ngModel" ngModel required /></p>
+            <div ngModelGroup="address">
+                <p>Street Name : <input name="street" [(ngModel)]="user.address.street" ngModel /></p>
+                <p>city : <input name="city" [(ngModel)]="user.address.city" ngModel /></p>
+                <p>PIN : <input name="pin" [(ngModel)]="user.address.pin" ngModel /></p>
+            </div>
+
+            <input type="reset" value="Reset" class="m-2" />
+            <input type="submit" value="Submit" [disabled]="myForm.invalid" />
+        </form>
+        <hr />
+        <div>Status: {{myForm.status}} </div>
+        <div>is Invalid: {{myForm.invalid}} </div>
+        <pre>{{myForm.value | json}}</pre>
+
+        <div>firstName value: {{firstName.value}}</div>
+        <div>firstName isvalid?: {{firstName.valid}}</div>
+    </div>
+</div>
