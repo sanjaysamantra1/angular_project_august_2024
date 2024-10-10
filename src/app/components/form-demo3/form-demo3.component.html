@@ -2,18 +2,29 @@
 <hr>
 <div class="row">
     <div class="col-sm-4 offset-4 border p-3">
-        <form [formGroup]="registrationForm">
+        <form [formGroup]="registrationForm" (submit)="submitMyForm(registrationForm)">
             <div class="form-group">
                 <label for="firstName">First Name</label>
                 <input id="firstName" class="form-control" formControlName="firstName" />
+                <span *ngIf="registrationForm.controls['firstName'].hasError('required')" class="text-danger">FirstName is Required</span>
+                <span *ngIf="registrationForm.controls['firstName'].hasError('minlength')" class="text-danger">FirstName should have inimum 5 chars</span>
             </div>
             <div class="form-group">
                 <label for="lastName">last Name</label>
                 <input id="lastName" class="form-control" formControlName="lastName" />
+                <span *ngIf="registrationForm.controls['lastName'].hasError('required')" class="text-danger">lastName is Required</span>
+                <span *ngIf="registrationForm.controls['lastName'].hasError('minlength')" class="text-danger">lastName should have inimum 5 chars</span>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" class="form-control" formControlName="email" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" formControlName="password" />
+                <span *ngIf="registrationForm.controls['password'].hasError('required')" class="text-danger">Password is Required</span>
+                <span *ngIf="registrationForm.controls['password'].hasError('passwordStrength')" class="text-danger">password Should have minimium 8 characters</span>
+                <span *ngIf="registrationForm.controls['password'].hasError('passwordPattern')" class="text-danger">password should have (atleast 1 small, 1 caps, 1 numeric)</span>
             </div>
             <div formGroupName="address">
                 <div class="form-group">
@@ -31,7 +42,10 @@
             </div>
             <div class="form-group mt-2">
                 <input type="reset" value="Clear" class="m-1 btn btn-danger">
-                <input type="submit" value="Submit" class="m-1 btn btn-success">
+                <input [disabled]="registrationForm.invalid" type="submit" value="Submit" class="m-1 btn btn-success">
+
+                <button (click)="setFormValue()">setValue</button>
+                <button (click)="patchFormValue()">patchValue</button>
             </div>
         </form>
         <pre>

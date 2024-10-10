@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { createPasswordStrengthValidator } from '../../validators/password-streangth-check.validator';
 
 @Component({
   selector: 'app-form-demo3',
@@ -15,21 +16,34 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class FormDemo3Component {
   registrationForm!: FormGroup;
 
-  constructor() {
+  constructor(private formbuilder: FormBuilder) {
     this.inititlizeForm();
   }
 
   inititlizeForm() {
-    this.registrationForm = new FormGroup({
-      firstName: new FormControl(),
-      lastName: new FormControl(),
-      email: new FormControl(),
-      address: new FormGroup({
-        street: new FormControl(),
-        city: new FormControl(),
-        pin: new FormControl()
-      })
-    });
+    this.registrationForm = this.formbuilder.group({
+      // key : [defaultValue , syncValidator, Asyncvalidator]
+      firstName: ['Sachin', [Validators.required, Validators.minLength(5)]],
+      lastName: ['', [Validators.required]],
+      email: [''],
+      password: ['', [Validators.required,createPasswordStrengthValidator()]],
+      address: {
+        street: [''],
+        city: [''],
+        pin: ['']
+      }
+    })
+  }
+
+  submitMyForm(registrationForm: FormGroup) {
+    console.log(registrationForm)
+  }
+
+  patchFormValue() {
+    this.registrationForm.patchValue({ firstName: 'sachin' })
+  }
+  setFormValue() {
+    this.registrationForm.setValue({ firstName: 'sachin' })
   }
 
 }
