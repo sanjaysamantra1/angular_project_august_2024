@@ -20,7 +20,8 @@
             <td>{{user.phone}}</td>
             <td>{{user.address.city}}</td>
             <td>
-                <fa-icon [icon]="faUser"></fa-icon>
+                <fa-icon [icon]="faUser" class="mx-3"></fa-icon>
+                <fa-icon [icon]="faEye" class="mx-3" [routerLink]="['/userdetails', user.id]"></fa-icon>
             </td>
         </tr>
         }
@@ -32,8 +33,8 @@
         @for(user of users | paginate: { itemsPerPage: 3, currentPage: p};track user.id){
         <div class="col-sm-3">
             <div class="card text-center">
-                <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
-                    alt="Card image cap">
+                <img class="card-img-top" src="https://attic.sh/ul4khwf22vvfdnk27l1qa7tuv03g"
+                    alt="Card image cap" height="200">
                 <div class="card-body">
                     <h5 class="card-title">{{user.name}}</h5>
                     <p class="card-text">{{user.address.city}}</p>
