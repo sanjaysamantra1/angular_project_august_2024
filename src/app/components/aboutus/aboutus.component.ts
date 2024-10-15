@@ -10,6 +10,7 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './aboutus.component.css'
 })
 export class AboutusComponent {
+  pageHasChanges = true;
   constructor(private router: Router, private location: Location) {
 
   }

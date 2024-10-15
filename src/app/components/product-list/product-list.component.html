@@ -11,7 +11,8 @@
         </div>
         <div class="col-sm-4">
             Search:
-            <input type="search" placeholder="Search..." [(ngModel)]="searchText" (ngModelChange)="onSearchTextChange($event)" />
+            <input type="search" placeholder="Search..." [(ngModel)]="searchText"
+                (ngModelChange)="onSearchTextChange($event)" />
         </div>
         <div class="col-sm-4">
             <button class="btn btn-primary mx-1" (click)="sortProducts('asc')">Sort Asc</button>
@@ -28,7 +29,8 @@
                     <p class="card-text">{{product.title}}</p>
                     <p class="card-text">{{product.price}}</p>
                     <p class="card-text">{{product.rating.rate}}({{product.rating.count}})</p>
-                    <button class="btn btn-primary mx-1">View</button>
+                    <button class="btn btn-primary mx-1" [routerLink]="['/productdetails']"
+                        [queryParams]="{id:product.id,title:product.title,price:product.price}">View</button>
                     <button class="btn btn-secondary" (click)="addToCart()">Add To Cart</button>
                 </div>
             </div>
