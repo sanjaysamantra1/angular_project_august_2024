@@ -16,7 +16,7 @@ import { userdetailsResolver } from './resolvers/userdetails.resolver';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'aboutus', component: AboutusComponent, canDeactivate: [haschangesGuard] },
+    { path: 'aboutus', component: AboutusComponent },
     {
         path: 'careers',
         component: CareersComponent,
