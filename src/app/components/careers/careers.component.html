@@ -6,6 +6,11 @@
         <a class="nav-link" routerLink="contract">Contract Jobs</a>
     </div>
     <div class="col-sm-9">
+        @defer {
+            <app-large></app-large>
+        }@placeholder (minimum 500ms) {
+            <p>Placeholder content</p>
+        }
         <router-outlet></router-outlet>
     </div>
 </div>
